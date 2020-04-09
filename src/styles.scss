@@ -1,29 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/scss/bootstrap";
+@import './variables';
 
 
 body {
   margin-top: 60px;
   height: 90vh;
-  background-color: #f4f4f4;
+  background-color: $BGC_Body;
+  color: $TC_Body;
   min-width: 400px;
 }
-.container{
-  margin-bottom: 20px;
-}
-h1{
-  font-weight: bold;
-}
 
-.pb-0-5{
-  padding-bottom: 3px;
-}
-.card:hover{
-  box-shadow:0 0 2px 2px #c1c1c1;
-}
-.buttonAccepDecline{
-  width: 45%;
-}
 
 .material-icons{ display: inline-flex;
   vertical-align: middle;}

@@ -5,7 +5,11 @@
   "projects": {
     "ICEWire": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -123,6 +127,9 @@
   "defaultProject": "ICEWire",
   "schematics": {
     "@schematics/angular:component": {
+      "styleext": "scss"
+    },
+    "@nrwl/schematics:component": {
       "styleext": "scss"
     }
   }
