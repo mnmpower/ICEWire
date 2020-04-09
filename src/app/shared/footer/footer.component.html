@@ -3,9 +3,16 @@
         <div class="row">
             <nav class="footer-nav">
                 <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
+                    <li>
+                        <a routerLink="/DIY" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                            rel="tooltip" title="Go to DIY"> Do it yourself
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link"  routerLink="/TM" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                            rel="tooltip" title="Go to Thomas More"> Thomas More
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <div class="credits ml-auto">

@@ -11,27 +11,39 @@
         <div class="navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="#!" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                        <p class="d-lg-none">Twitter</p>
+                    <a class="nav-link" routerLink="/DIY" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                    rel="tooltip" title="Ga naar Do It Yourself">
+                        <i class="fas fa-hammer"></i>Do it yourself
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="#!" target="_blank">
+                    <a class="nav-link"  routerLink="/TM" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                    rel="tooltip" title="Ga naar Thomas More Initiatieven">
+                        <i class="fas fa-graduation-cap"></i>Thomas More
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Volg ons op LinkedIn" href="#!" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <p class="d-lg-none">LinkedIn</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Like ons op Facebook" href="#!" target="_blank">
                         <i class="fab fa-facebook-square"></i>
                         <p class="d-lg-none">Facebook</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="#!" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Volg ons op Instagram" href="#!" target="_blank">
                         <i class="fab fa-instagram"></i>
                         <p class="d-lg-none">Instagram</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="#!" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <p class="d-lg-none">GitHub</p>
+                    <a class="nav-link" rel="tooltip" title="Subscribe op ons op YouTube" href="#!" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                        <p class="d-lg-none">YouTube</p>
                     </a>
                 </li>
             </ul>

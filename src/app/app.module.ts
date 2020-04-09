@@ -7,9 +7,9 @@ import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './shared/footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { DIYComponent } from './diy/diy.component';
-import { TMComponent } from './tm/tm.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DIYComponent } from './pages/diy/diy.component';
+import { TMComponent } from './pages/tm/tm.component';
 import { CardComponent } from './components/card/card.component';
 
 @NgModule({
