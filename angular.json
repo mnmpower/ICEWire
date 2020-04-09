@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/sass/styles.scss"
             ],
             "scripts": []
           },
@@ -91,7 +93,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/sass/styles.scss"
             ],
             "scripts": []
           }
@@ -132,5 +136,8 @@
     "@nrwl/schematics:component": {
       "styleext": "scss"
     }
+  },
+  "cli": {
+    "analytics": "5db08723-ecfa-4bfe-8832-3cdf8c387acd"
   }
 }
