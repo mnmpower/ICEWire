@@ -8,6 +8,8 @@ import {AppRoutingModule} from './app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { DIYComponent } from './diy/diy.component';
+import { TMComponent } from './tm/tm.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { HomeComponent } from './home/home.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
+    DIYComponent,
+    TMComponent,
   ],
   imports: [
     BrowserModule,
