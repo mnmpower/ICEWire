@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="#">ICE CUBE - Wire</a>
+            <a class="navbar-brand" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" rel="tooltip" title="Ga naar ICE Wire Home">ICE CUBE - Wire</a>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
@@ -23,25 +23,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Volg ons op LinkedIn" href="#!" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                        <p class="d-lg-none">LinkedIn</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Like ons op Facebook" href="#!" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Like ons op Facebook" href="https://www.facebook.com/WeAreICEWire/" target="_blank">
                         <i class="fab fa-facebook-square"></i>
                         <p class="d-lg-none">Facebook</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Volg ons op Instagram" href="#!" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Volg ons op Instagram" href="https://instagram.com/__ice__wire__?igshid=1g3va8lld3s2" target="_blank">
                         <i class="fab fa-instagram"></i>
                         <p class="d-lg-none">Instagram</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Subscribe op ons op YouTube" href="#!" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Subscribe op ons op YouTube" href="https://www.youtube.com/channel/UCx9QJJyvCLacO0SargxKeXw" target="_blank">
                         <i class="fab fa-youtube"></i>
                         <p class="d-lg-none">YouTube</p>
                     </a>

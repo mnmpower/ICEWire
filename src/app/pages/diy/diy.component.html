@@ -3,47 +3,33 @@
   <div class="page-header section-dark" style="background-image: url('assets/img/bg-diy.jpg')">
     <div class="filter"></div>
     <div class="content-center">
-        <div class="container">
-            <div class="title-brand">
-                <div class="angular-logo">
-                    <img src="assets/img/angular2-logo.png" alt="">
-                </div>
-                <h1 class="presentation-title">Ice Cube Wire</h1>
-            </div>
-
-            <h2 class="presentation-subtitle text-center">Do it Yourself</h2>
+      <div class="container">
+        <div class="title-brand">
+          <div class="angular-logo w-50">
+            <img class="embed-responsive" src="assets/img/ICEWireLogo.svg" alt="">
+          </div>
+          <h1 class="presentation-title">ICE Wire DIY</h1>
         </div>
+
+        <h2 class="presentation-subtitle text-center">Do it Yourself</h2>
+      </div>
     </div>
   </div>
 
-<div class="container main">
-  <!-- Page Features -->
-  <div class="row">
-  
-    <div class="row card-deck mt-5 mb-5"> 
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <app-card></app-card>
+  <div class="container main">
+    <!-- Page Features -->
+    <div class="row">
+
+      <div class="row card-deck mt-5 mb-5">
+
+        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let p of projecten;">
+          <app-card description="{{p.description}}" link="{{p.link}}" title="{{p.title}}" img="{{p.img}}"></app-card>
+        </div>
       </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <app-card></app-card>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <app-card></app-card>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <app-card></app-card>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <app-card></app-card>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
-        <app-card></app-card>
-      </div>
+
     </div>
+    <!-- /.row -->
 
   </div>
-  <!-- /.row -->
-
-</div>
-<!-- /.container -->
+  <!-- /.container -->
 </div>
