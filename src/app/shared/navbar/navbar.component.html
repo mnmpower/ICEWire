@@ -10,31 +10,37 @@
         </div>
         <div class="navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+              <li class="nav-item" (click)="sidebarClose()" >
+                <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                   rel="tooltip" title="Ga naar Home">
+                  <i class="fas fa-home"></i>ICEWire - Home
+                </a>
+              </li>
+                <li class="nav-item" (click)="sidebarClose()">
                     <a class="nav-link" routerLink="/DIY" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                     rel="tooltip" title="Ga naar Do It Yourself">
                         <i class="fas fa-hammer"></i>Do It Yourself
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" (click)="sidebarClose()">
                     <a class="nav-link"  routerLink="/TM" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                     rel="tooltip" title="Ga naar Thomas More Initiatieven">
                         <i class="fas fa-graduation-cap"></i>Thomas More
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" (click)="sidebarClose()">
                     <a class="nav-link" rel="tooltip" title="Like ons op Facebook" href="https://www.facebook.com/WeAreICEWire/" target="_blank">
                         <i class="fab fa-facebook-square"></i>
                         <p class="d-lg-none">Facebook</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Volg ons op Instagram" href="https://instagram.com/__ice__wire__?igshid=1g3va8lld3s2" target="_blank">
+                    <a class="nav-link" (click)="sidebarClose()" rel="tooltip" title="Volg ons op Instagram" href="https://instagram.com/__ice__wire__?igshid=1g3va8lld3s2" target="_blank">
                         <i class="fab fa-instagram"></i>
                         <p class="d-lg-none">Instagram</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" (click)="sidebarClose()">
                     <a class="nav-link" rel="tooltip" title="Subscribe op ons op YouTube" href="https://www.youtube.com/channel/UCx9QJJyvCLacO0SargxKeXw" target="_blank">
                         <i class="fab fa-youtube"></i>
                         <p class="d-lg-none">YouTube</p>
