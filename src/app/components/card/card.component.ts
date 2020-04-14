@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./card.component.scss'],
   template: `
     <div class="card m-3">
-      <img src="{{img}}" class="card-img-top" alt="...">
+      <img src="./assets/img/{{img}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <p class="card-text">{{description}}</p>
@@ -14,7 +14,7 @@ import {Component, Input, OnInit} from '@angular/core';
           Youtube</a>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">Posted on {{date}}</small>
       </div>
     </div>
   `
@@ -25,6 +25,7 @@ export class CardComponent implements OnInit {
   @Input() link: string;
   @Input() title: string;
   @Input() img: string;
+  @Input() date: string;
 
 
   constructor() {

@@ -5,12 +5,14 @@ import {AppComponent} from './app.component';
 import {NavbarComponent} from './shared/navbar/navbar.component';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterComponent } from './shared/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
-import { DIYComponent } from './pages/diy/diy.component';
-import { TMComponent } from './pages/tm/tm.component';
-import { CardComponent } from './components/card/card.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {FooterComponent} from './shared/footer/footer.component';
+import {HomeComponent} from './pages/home/home.component';
+import {DIYComponent} from './pages/diy/diy.component';
+import {TMComponent} from './pages/tm/tm.component';
+import {CardComponent} from './components/card/card.component';
+import {VariablesService} from './shared/variables.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,13 @@ import { CardComponent } from './components/card/card.component';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HttpClientModule,
 
   ],
-  providers: [],
+  providers: [
+    VariablesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

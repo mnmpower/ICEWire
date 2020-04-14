@@ -24,8 +24,8 @@
 
       <div class="row card-deck mt-5 mb-5">
 
-        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let p of projecten;">
-          <app-card description="{{p.description}}" link="{{p.link}}" title="{{p.title}}" img="{{p.img}}"></app-card>
+        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let p of projecten">
+          <app-card description="{{p.description}}" link="{{p.link}}" title="{{p.title}}" img="{{p.img}}" date="{{p.datum}}"></app-card>
         </div>
       </div>
 

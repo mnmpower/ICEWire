@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Project} from '../../models/project.model';
+import {ProjectService} from '../../services/project.service';
 
 @Component({
   selector: 'app-diy',
@@ -6,20 +8,19 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./diy.component.scss']
 })
 export class DIYComponent implements OnInit {
-  projecten: any;
+  projecten: Project[] = [];
+  project: Project = new Project();
 
-  constructor() {
-    this.projecten = [
-      {
-        description: 'Het eerste filmpje in de reeks "Origami". We laten hier zien hoe je een konijn kan maken met behulp van enkel een vierkant blaadje papier.',
-        link: 'https://youtu.be/1eojwlsq5o0',
-        img: './assets/img/origami-konijn.png',
-        title: 'Origami - konijn'
-      }
-    ];
+  constructor(
+    private projectService: ProjectService,
+  ) {
+    this.projectService.getProjects().subscribe(r => {
+      this.projecten = r;
+    });
   }
 
   ngOnInit(): void {
+
   }
 
 }
