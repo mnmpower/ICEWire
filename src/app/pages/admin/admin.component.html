@@ -1,0 +1,80 @@
+<!-- Page Content -->
+<div class="wrapper">
+  <div class="page-header section-dark" style="background-image: url('assets/img/bg-admin.jpg')">
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand">
+          <div class="container not-in-navbar">
+            <div class="d-flex justify-content-center h-100">
+              <div class="card card-admin">
+                <div class="card-header">
+                  <h3>Sign In</h3>
+                  <div class="d-flex justify-content-end social_icon">
+                    <span><i class="fab fa-facebook-square"></i></span>
+                    <span><i class="fab fa-instagram-square"></i></span>
+                    <span><i class="fab fa-youtube-square"></i></span>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                      <div class="input-group ">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="username" formControlName="email">
+
+                      </div>
+                      <div *ngIf="submitted && formControls.email.errors" class="text-white-50 mt-2">
+                        <div *ngIf="formControls.email.errors.required">Username is verplicht!
+                        </div>
+                        <div *ngIf="formControls.email.errors.email">Geen geldige username!</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="password" formControlName="password">
+                      </div>
+                      <div *ngIf="submitted && formControls.password.errors" class="text-white-50 mt-2">
+                        <div *ngIf="formControls.password.errors.required">Wachtwoord is verplicht!
+                        </div>
+                        <div *ngIf="formControls.password.errors.minlength">Wahtwoord moet minstens 8 tekens bevatten!</div>
+                      </div>
+                    </div>
+
+
+                    <div class="row align-items-center remember">
+                      <input type="checkbox" id="rememberMe"><label id="rememberMeLabel" for="rememberMe">Remember
+                      me</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" value="Login" class="btn float-right login_btn">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h1 class="presentation-title mt-5">ICE Wire ADMIN</h1>
+        </div>
+
+        <h2 class="presentation-subtitle text-center">Enkel voor beheerders!</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container main">
+    <!-- Page Features -->
+    <div class="row">
+
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+</div>

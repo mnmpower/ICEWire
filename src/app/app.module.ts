@@ -13,6 +13,11 @@ import {TMComponent} from './pages/tm/tm.component';
 import {CardComponent} from './components/card/card.component';
 import {VariablesService} from './shared/variables.service';
 import {HttpClientModule} from '@angular/common/http';
+import {AdminComponent} from './pages/admin/admin.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ProjectService} from './services/project.service';
+import {BeheerProjectenComponent} from './pages/CRUD/beheer-projecten/beheer-projecten.component';
+import { TableSortableComponent } from './components/table-sortable/table-sortable.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,9 @@ import {HttpClientModule} from '@angular/common/http';
     DIYComponent,
     TMComponent,
     CardComponent,
+    AdminComponent,
+    BeheerProjectenComponent,
+    TableSortableComponent
   ],
   imports: [
     BrowserModule,
@@ -30,11 +38,14 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     NoopAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [
-    VariablesService
+    VariablesService,
+    ProjectService
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

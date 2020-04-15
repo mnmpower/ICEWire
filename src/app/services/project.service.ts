@@ -9,11 +9,13 @@ import {Project} from '../models/project.model';
 })
 export class ProjectService {
 
-  constructor(private http: HttpClient, private variablesService: VariablesService) {
-  }
-
   private baseUrl = this.variablesService.getAPIBase_URL();
 
+
+  constructor(
+    private http: HttpClient,
+    private variablesService: VariablesService) {
+  }
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.baseUrl + 'projects',
       {headers: new HttpHeaders().set('Access-Control-Allow-Origin', 'origin-list')}
