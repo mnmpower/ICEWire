@@ -96,15 +96,12 @@ export class TableProjectsCrudComponent implements OnInit {
     this.invalideForm = false;
 
     if (this.project.projectID === 0) {
-      console.log('POST:', this.project);
       this.projectService.addProject(this.project).subscribe(r => {
         this.project.projectID = r.projectID;
-        console.log('type: ', this.project);
         this.loadProjects();
       });
     } else {
       this.projectService.updateProject(this.project).subscribe(r => {
-        console.log('succes');
         this.loadProjects();
       });
     }

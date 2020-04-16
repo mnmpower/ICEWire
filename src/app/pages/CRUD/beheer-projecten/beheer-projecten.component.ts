@@ -10,18 +10,9 @@ import {ProjectService} from '../../../services/project.service';
 })
 export class BeheerProjectenComponent {
 
-  projects: Project[] = [];
-  headers: string[] = [];
-  keys: string[] = [];
-  project: Project = new Project();
-
   constructor(
     private projectService: ProjectService
   ) {
-    this.projectService.getProjects().subscribe(r => {
-      this.projects = r;
-      this.keys = Object.keys(this.project);
-    });
   }
 
 }
