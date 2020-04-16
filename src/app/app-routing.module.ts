@@ -5,6 +5,8 @@ import {DIYComponent} from './pages/diy/diy.component';
 import {TMComponent} from './pages/tm/tm.component';
 import {AdminComponent} from './pages/admin/admin.component';
 import {BeheerProjectenComponent} from './pages/CRUD/beheer-projecten/beheer-projecten.component';
+import {ForbiddenComponent} from './pages/forbidden/forbidden.component';
+import {NeedAuthGuard} from './shared/security/need-auth-guard';
 
 
 const routes: Routes = [
@@ -15,7 +17,10 @@ const routes: Routes = [
 
   // admin kant, dus autentication guard op zetten
   {path: 'admin', component: AdminComponent},
-  {path: 'beheerProjecten', component: BeheerProjectenComponent, /*canActivate: [NeedAuthGuard]*/},
+  {path: 'beheerProjecten/:id', component: BeheerProjectenComponent, canActivate: [NeedAuthGuard]},
+
+  // Error Pages
+  {path: 'forbidden', component: ForbiddenComponent},
 
   // al de rest doorsturen naar home
   {path: '**', redirectTo: ''}

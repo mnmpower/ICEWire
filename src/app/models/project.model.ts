@@ -6,6 +6,7 @@ export class Project {
   public img: string;
   public title: string;
   public datum: string;
+  public personID: string;
 
   constructor() {
   }

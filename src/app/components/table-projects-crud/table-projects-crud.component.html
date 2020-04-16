@@ -1,0 +1,85 @@
+<div *ngIf="tonen" class="text-left text-white">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title: </label>
+      <input type="text" class="form-control" id="title"
+             placeholder="Vul een title in"
+             [(ngModel)]="project.title" name="title" required>
+    </div>
+    <div class="form-group mt-1">
+      <label for="datum">Datum: </label>
+      <input type="text" class="form-control" id="datum"
+             placeholder="DD/MM/YYYY"
+             [(ngModel)]="project.datum" name="datum" required>
+    </div>
+    <div class="form-group mt-1">
+      <label for="img">Naam afbeelding: </label>
+      <input type="text" class="form-control" id="img"
+             placeholder="afbeelding.jpg"
+             [(ngModel)]="project.img" name="img" required>
+    </div>
+    <div class="form-group mt-1">
+      <label for="datum">Link: </label>
+      <input type="text" class="form-control" id="link"
+             placeholder="Vul een link in"
+             [(ngModel)]="project.link" name="link" required>
+    </div>
+    <div class="form-group mt-1">
+      <label for="datum">Persoon: </label>
+      <input type="number" min="0"  class="form-control" id="personID"
+             placeholder="Vul een personID in"
+             [(ngModel)]="project.personID" name="personID" required>
+    </div>
+    <div class="form-group mt-1">
+      <label for="img">Korte beschrijving: </label>
+      <textarea type="text" class="form-control" id="description"
+                placeholder="Vul een bechrijving in"
+                [(ngModel)]="project.description" name="description" required></textarea>
+    </div>
+
+
+    <br/>
+    <div class="red h5 text-center" *ngIf="invalideForm">Vul alle velden in aub!</div>
+    <br/>
+    <div class="float-right pb-3">
+      <button (click)="closePopup()" class="btn btn-primary">Annuleren</button>
+      <button *ngIf="project.projectID == 0" type="submit" class="btn  ">Toevoegen</button>
+      <button *ngIf="project.projectID != 0" type="submit" class="btn btn-primary">Updaten</button>
+    </div>
+  </form>
+</div>
+
+
+<!--TABLE HIER-->
+<div *ngIf="!tonen">
+<div *ngIf="!tonen" ><i title="Toevoegen" class="far fa-plus-square fa-2x pointer text-white float-left pb-2" (click)="newProject()"></i></div>
+<table class="table table-active table-light text-white">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Titel</th>
+    <th scope="col">Datum</th>
+    <th scope="col">Afbeelding</th>
+    <th scope="col">Beschrijving</th>
+    <th scope="col" width="100px">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let project of projects"  >
+    <th scope="row">{{project.projectID}}</th>
+    <td>{{project.title}}</td>
+    <td>{{project.datum}}</td>
+    <td>{{project.img}}</td>
+    <td  *ngIf="project.description.length >= 30">{{project.description.substr(0, 30)}}
+      ...
+    </td>
+    <td *ngIf="project.description.length < 30">{{project.description}}</td>
+    <td>
+      <i class="fas fa-pencil-alt fa-lg pointer" title="Delete" (click)="edit(project.projectID)"></i>&nbsp;
+      <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(project.projectID)"></i>
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+</div>

@@ -15,11 +15,18 @@ html,body{
 }
 
 .card{
-  height: 370px;
+  height: auto;
   margin-top: auto;
   margin-bottom: auto;
   width: 100%;
   background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+
+.width{
+  width: 70%;
+  min-width: 850px;
 }
 
 .social_icon span{
@@ -91,6 +98,10 @@ input:focus{
   margin-top: 200px;
 }
 
+.not-in-navbar-admin{
+  margin-top: 100px;
+}
+
 input[type="checkbox"] {
   -webkit-appearance: checkbox;
   -moz-appearance: checkbox;
@@ -112,3 +123,4 @@ a{
 .title-brand{
   max-width:100vw!important;
 }
+

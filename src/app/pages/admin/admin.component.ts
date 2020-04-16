@@ -41,9 +41,8 @@ export class AdminComponent implements OnInit {
 
     this.authenticateService.authenticateAdmin(this.logInForm.value).subscribe(
       result => {
-        console.log('RESULT : ', result);
         localStorage.setItem('token', result.token);
-        this.router.navigate(['beheerProjecten'], {replaceUrl: true});
+        this.router.navigate(['beheerProjecten/' + result.adminID], {replaceUrl: true});
       },
       error => {
         if (error.status === 400) {

@@ -12,12 +12,16 @@ import {DIYComponent} from './pages/diy/diy.component';
 import {TMComponent} from './pages/tm/tm.component';
 import {CardComponent} from './components/card/card.component';
 import {VariablesService} from './shared/variables.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AdminComponent} from './pages/admin/admin.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProjectService} from './services/project.service';
 import {BeheerProjectenComponent} from './pages/CRUD/beheer-projecten/beheer-projecten.component';
-import { TableSortableComponent } from './components/table-sortable/table-sortable.component';
+import { TableProjectsCrudComponent } from './components/table-projects-crud/table-projects-crud.component';
+import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
+import {SecurityInterceptor} from './shared/security/security.interceptor';
+import {NeedAuthGuard} from './shared/security/need-auth-guard';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { TableSortableComponent } from './components/table-sortable/table-sortab
     CardComponent,
     AdminComponent,
     BeheerProjectenComponent,
-    TableSortableComponent
+    TableProjectsCrudComponent,
+    ForbiddenComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,10 +43,15 @@ import { TableSortableComponent } from './components/table-sortable/table-sortab
     AppRoutingModule,
     NoopAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: SecurityInterceptor,
+    multi: true,
+  },
+    NeedAuthGuard,
     VariablesService,
     ProjectService
   ],

@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {Project} from '../../../models/project.model';
+import {ProjectService} from '../../../services/project.service';
 
 
 @Component({
@@ -8,8 +10,18 @@ import {Component} from '@angular/core';
 })
 export class BeheerProjectenComponent {
 
+  projects: Project[] = [];
+  headers: string[] = [];
+  keys: string[] = [];
+  project: Project = new Project();
 
-  constructor() {
+  constructor(
+    private projectService: ProjectService
+  ) {
+    this.projectService.getProjects().subscribe(r => {
+      this.projects = r;
+      this.keys = Object.keys(this.project);
+    });
   }
 
 }
