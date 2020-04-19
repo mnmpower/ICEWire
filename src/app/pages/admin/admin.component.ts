@@ -45,10 +45,8 @@ export class AdminComponent implements OnInit {
         this.router.navigate(['beheerProjecten/' + result.adminID], {replaceUrl: true});
       },
       error => {
-        if (error.status === 400) {
-          this.error = error.error.message;
-          alert(error.error.message);
-        }
+        this.error = error.error.message;
+        alert(error.error.message);
       },
     );
   }

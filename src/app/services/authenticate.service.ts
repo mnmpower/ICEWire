@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserLogin} from '../models/user-login.model';
 import {Admin} from '../models/admin.model';
 import {AdminService} from './admin.service';
@@ -23,7 +23,8 @@ export class AuthenticateService {
   private baseUrl = this.variablesService.getAPIBase_URL();
 
   authenticateAdmin(userLogin: UserLogin): Observable<Admin> {
-    return this.httpClient.post<Admin>(this.baseUrl + 'admins/authenticate', userLogin);
+    return this.httpClient.post<Admin>(this.baseUrl + 'admins/authenticate', userLogin
+      );
   }
 
   isLogged() {

@@ -46,3 +46,7 @@ testem.log
 Thumbs.db
 
 src/environments/environment.ts
+
+public/
+
+.firebase/

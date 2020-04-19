@@ -18,9 +18,7 @@ export class ProjectService {
   }
 
   getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.baseUrl + 'projects',
-      {headers: new HttpHeaders().set('Access-Control-Allow-Origin', 'origin-list')}
-    );
+    return this.http.get<Project[]>(this.baseUrl + 'projects');
   }
 
   getProject(ID: number): Observable<Project> {
