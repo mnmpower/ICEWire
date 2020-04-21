@@ -14,7 +14,7 @@ export class DIYComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
   ) {
-    this.projectService.getProjects().subscribe(r => {
+    this.projectService.getProjectsWhereShowIsTrue().subscribe(r => {
       this.projecten = r;
     });
   }

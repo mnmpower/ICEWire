@@ -8,13 +8,17 @@
             <div class="d-flex justify-content-center h-100">
               <div class="card card-admin">
                 <div class="card-header">
-                  <h3>Projecten</h3>
+                  <h3>Admins</h3>
+                  <div class="d-flex justify-content-start social_icon_left social_icon">
+                     <span>
+                       <a rel="tooltip" (click)="toAdminMenu()">
+                        <i class="fas fa-caret-square-left"></i>
+                      </a>
+                    </span>
+                  </div>
                   <div class="d-flex justify-content-end social_icon">
                     <span>
-                      <a rel="tooltip" title="Like ons op Facebook" href="https://www.facebook.com/WeAreICEWire/"
-                         target="_blank">
                         <i class="fab fa-facebook-square"></i>
-                    </a>
                     </span>
                     <span>
                       <a rel="tooltip" title="Like ons op Facebook" href="https://www.facebook.com/WeAreICEWire/"
@@ -28,11 +32,16 @@
                         <i class="fab fa-youtube-square"></i>
                     </a>
                     </span>
+                    <span>
+                       <a rel="tooltip" (click)="signOut()">
+                       <i class="fas fa-sign-out-alt"></i>
+                      </a>
+                    </span>
                   </div>
                 </div>
                 <div class="card-body">
                   <!--HIER TABLE INVOEGEN-->
-                  <app-table-projects-crud></app-table-projects-crud>
+
                 </div>
               </div>
             </div>
@@ -54,3 +63,4 @@
   <!-- /.container -->
 </div>
 
+<p>beheer-admins works!</p>

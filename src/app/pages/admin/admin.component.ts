@@ -42,11 +42,11 @@ export class AdminComponent implements OnInit {
     this.authenticateService.authenticateAdmin(this.logInForm.value).subscribe(
       result => {
         localStorage.setItem('token', result.token);
-        this.router.navigate(['beheerProjecten/' + result.adminID], {replaceUrl: true});
+        this.router.navigate(['adminMenu/' + result.adminID], {replaceUrl: true});
       },
       error => {
-        this.error = error.error.message;
-        alert(error.error.message);
+        this.error = error.toString();
+        alert(this.error);
       },
     );
   }

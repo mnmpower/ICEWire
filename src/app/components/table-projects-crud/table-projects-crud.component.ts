@@ -3,6 +3,10 @@ import {ProjectService} from '../../services/project.service';
 import {Project} from '../../models/project.model';
 import {AdminService} from '../../services/admin.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Category} from '../../models/category.model';
+import {Person} from '../../models/person.model';
+import {CategoryService} from '../../services/category.service';
+import {PersonService} from '../../services/person.service';
 
 @Component({
   selector: 'app-table-projects-crud',
@@ -15,11 +19,15 @@ export class TableProjectsCrudComponent implements OnInit {
   invalideForm = false;
 
   projects: Project[] = [];
+  categories: Category[] = [];
+  persons: Person[] = [];
   project: Project = new Project();
 
   constructor(
     private projectService: ProjectService,
     private adminService: AdminService,
+    private categoryService: CategoryService,
+    private personService: PersonService,
     private activatedroute: ActivatedRoute,
     private router: Router,
   ) {
@@ -29,11 +37,25 @@ export class TableProjectsCrudComponent implements OnInit {
       }
     });
     this.loadProjects();
+    this.loadCategories();
+    this.loadPersons();
   }
 
   loadProjects() {
     this.projectService.getProjects().subscribe(r => {
       this.projects = r;
+    });
+  }
+
+  loadCategories() {
+    this.categoryService.getCategories().subscribe(r => {
+      this.categories = r;
+    });
+  }
+
+  loadPersons() {
+    this.personService.getPersons().subscribe(r => {
+      this.persons = r;
     });
   }
 
@@ -48,7 +70,11 @@ export class TableProjectsCrudComponent implements OnInit {
     this.project.description = null;
     this.project.img = null;
     this.project.link = null;
-    this.project.personID = null;
+    this.project.personID = 0;
+    this.project.categoryID = 0;
+    this.project.show = true;
+    this.project.person = null;
+    this.project.category = null;
     this.openPopup();
   }
 
@@ -61,8 +87,8 @@ export class TableProjectsCrudComponent implements OnInit {
 
   delete(projectID: number) {
     this.projectService.getProject(projectID).subscribe(r => {
-      let antwoord = confirm('Bent u zeker dat u ' + r.title + 'wilt verwijderen?');
-      if (antwoord === true) {
+      const answer = confirm('Bent u zeker dat u ' + r.title + 'wilt verwijderen?');
+      if (answer === true) {
         this.projectService.delete(projectID).subscribe(re => {
           this.loadProjects();
         });
@@ -71,10 +97,12 @@ export class TableProjectsCrudComponent implements OnInit {
   }
 
   closePopup() {
+    this.invalideForm = false;
     this.tonen = false;
   }
 
   openPopup() {
+    this.invalideForm = false;
     this.tonen = true;
   }
 
@@ -89,6 +117,8 @@ export class TableProjectsCrudComponent implements OnInit {
       || this.project.img === null
       || this.project.link === null
       || this.project.description === null
+      || this.project.personID == 0
+      || this.project.categoryID == 0
     ) {
       this.invalideForm = true;
       return;

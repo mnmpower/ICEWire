@@ -19,17 +19,28 @@
              [(ngModel)]="project.img" name="img" required>
     </div>
     <div class="form-group mt-1">
-      <label for="datum">Link: </label>
+      <label for="link">Link: </label>
       <input type="text" class="form-control" id="link"
              placeholder="Vul een link in"
              [(ngModel)]="project.link" name="link" required>
     </div>
+
     <div class="form-group mt-1">
-      <label for="datum">Persoon: </label>
-      <input type="number" min="0"  class="form-control" id="personID"
-             placeholder="Vul een personID in"
-             [(ngModel)]="project.personID" name="personID" required>
+      <label for="person">Persoon: </label>
+      <select class="form-control" name="person" id="person" [(ngModel)]="project.personID">
+        <option value="0">--- Selecteer een persoon ---</option>
+        <option *ngFor="let p of persons" value="{{p.personID}}">{{p.firstName}} {{p.lastName}}</option>
+      </select>
     </div>
+
+    <div class="form-group mt-1">
+      <label for="category">Categorie: </label>
+      <select class="form-control" name="category" id="category" [(ngModel)]="project.categoryID">
+        <option value="0">--- Selecteer een category ---</option>
+        <option *ngFor="let c of categories" value="{{c.categoryID}}">{{c.name}}</option>
+      </select>
+    </div>
+
     <div class="form-group mt-1">
       <label for="img">Korte beschrijving: </label>
       <textarea type="text" class="form-control" id="description"
@@ -37,6 +48,13 @@
                 [(ngModel)]="project.description" name="description" required></textarea>
     </div>
 
+    <div class="form-group mt-1">
+      <label for="show">Zichtbaarheid: </label>
+      <select class="form-control" name="show" id="show" [(ngModel)]="project.show">
+        <option value="{{true}}" >Tonen</option>
+        <option value="{{false}}">Verbergen</option>
+      </select>
+    </div>
 
     <br/>
     <div class="red h5 text-center" *ngIf="invalideForm">Vul alle velden in aub!</div>

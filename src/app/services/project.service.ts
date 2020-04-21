@@ -18,7 +18,13 @@ export class ProjectService {
   }
 
   getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.baseUrl + 'projects');
+    return this.http.get<Project[]>(this.baseUrl + 'projects', {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    });
+  }
+
+  getProjectsWhereShowIsTrue(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.baseUrl + 'projects/whereShowIsTrue');
   }
 
   getProject(ID: number): Observable<Project> {
