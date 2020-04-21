@@ -3,6 +3,7 @@ import {FormBuilder} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticateService} from '../../../services/authenticate.service';
 import {AdminService} from '../../../services/admin.service';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-admin-menu',
@@ -60,7 +61,8 @@ export class AdminMenuComponent implements OnInit {
   }
 
   signOut() {
-    this.router.navigate(['admin'], {replaceUrl: true});
     localStorage.clear();
+    this.authenticateService.isLoggedin = new BehaviorSubject( false);
+    this.router.navigate(['admin'], {replaceUrl: true});
   }
 }

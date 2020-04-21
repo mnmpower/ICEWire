@@ -3,6 +3,7 @@ import {FormBuilder} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AdminService} from '../../../../services/admin.service';
 import {AuthenticateService} from '../../../../services/authenticate.service';
+import {BehaviorSubject} from 'rxjs';
 
 
 @Component({
@@ -34,7 +35,8 @@ export class BeheerProjectenComponent {
   }
 
   signOut() {
-    this.router.navigate(['admin'], {replaceUrl: true});
     localStorage.clear();
+    this.authenticateService.isLoggedin = new BehaviorSubject( false);
+    this.router.navigate(['admin'], {replaceUrl: true});
   }
 }

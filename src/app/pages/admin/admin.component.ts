@@ -19,6 +19,12 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private authenticateService: AuthenticateService
   ) {
+    if (this.authenticateService.isLoggedin.getValue()) {
+      this.authenticateService.isLogged().subscribe(r => {
+        this.router.navigate(['adminMenu/' + r], {replaceUrl: true});
+      });
+
+    }
   }
 
   ngOnInit(): void {

@@ -15,6 +15,10 @@ import {PersonService} from '../../services/person.service';
 })
 export class TableProjectsCrudComponent implements OnInit {
 
+  imageError = '';
+  isImageSaved = false;
+  valideImage = true;
+
   tonen = false;
   invalideForm = false;
 
@@ -107,6 +111,9 @@ export class TableProjectsCrudComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.valideImage) {
+      return;
+    }
     if (this.project.title === ''
       || this.project.datum === ''
       || this.project.img === ''
@@ -137,5 +144,59 @@ export class TableProjectsCrudComponent implements OnInit {
     }
 
     this.closePopup();
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.imageError = null;
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      // Size Filter Bytes
+      // const max_size = 20971520;
+      const max_size = 409600;
+      const allowed_types = ['image/png', 'image/jpeg', 'image/jpg'];
+      const max_height = 360 *2;
+      const max_width = 640 *2;
+
+      console.log('size:', fileInput.target.files[0].size);
+      console.log('MAX-size:', max_size);
+
+      if (fileInput.target.files[0].size > max_size) {
+        this.imageError =
+          'Maximum size allowed is ' + max_size / 1024 + 'Kb';
+        this.isImageSaved = false;
+        return;
+      }
+
+      if (!allowed_types.includes(fileInput.target.files[0].type)) {
+        this.imageError = 'Only Images are allowed ( JPG | PNG )';
+        this.isImageSaved = false;
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = rs => {
+          const img_height = rs.currentTarget['height'];
+          const img_width = rs.currentTarget['width'];
+
+          if (img_height > max_height || img_width > max_width) {
+            this.imageError =
+              'Maximum dimentions allowed ' +
+              max_height +
+              '*' +
+              max_width +
+              'px';
+
+            this.isImageSaved = false;
+            return false;
+          } else {
+            this.project.img = e.target.result;
+            this.isImageSaved = true;
+          }
+        };
+      };
+
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
   }
 }
