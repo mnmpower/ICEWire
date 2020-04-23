@@ -17,7 +17,7 @@
       <label>Afbeelding:</label>
       <label for="fileUpload" class="custom-fileUpload vc-prepare childDiv">
         <i class="material-icons md-18 mr-3 vertical-center">cloud_upload</i>Upload een foto
-        <input id="fileUpload" type="file" accept="image/*" (change)="fileChangeEvent($event)" />
+        <input id="fileUpload" type="file" accept="image/*" (change)="fileChangeEvent($event)"/>
       </label>
     </div>
     <div class="form-group mt-1">
@@ -53,7 +53,7 @@
     <div class="form-group mt-1">
       <label for="show">Zichtbaarheid: </label>
       <select class="form-control" name="show" id="show" [(ngModel)]="project.show">
-        <option value="{{true}}" >Tonen</option>
+        <option value="{{true}}">Tonen</option>
         <option value="{{false}}">Verbergen</option>
       </select>
     </div>
@@ -73,35 +73,37 @@
 
 <!--TABLE HIER-->
 <div *ngIf="!tonen">
-<div *ngIf="!tonen" ><i title="Toevoegen" class="far fa-plus-square fa-2x pointer text-white float-left pb-2" (click)="newProject()"></i></div>
-<table class="table table-active table-light text-white">
-  <thead>
-  <tr>
-    <th scope="col">ID</th>
-    <th scope="col">Titel</th>
-    <th scope="col">Datum</th>
-    <th scope="col">zichtbaarheid</th>
-    <th scope="col">Beschrijving</th>
-    <th scope="col" width="100px">Acties</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let project of projects"  >
-    <th scope="row">{{project.projectID}}</th>
-    <td>{{project.title}}</td>
-    <td>{{project.datum}}</td>
-    <td *ngIf="project.show">Zichtbaar</td>
-    <td *ngIf="!project.show">Verborgen</td>
-    <td  *ngIf="project.description.length >= 30">{{project.description.substr(0, 30)}}
-      ...
-    </td>
-    <td *ngIf="project.description.length < 30">{{project.description}}</td>
-    <td>
-      <i class="fas fa-pencil-alt fa-lg pointer" title="Delete" (click)="edit(project.projectID)"></i>&nbsp;
-      <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(project.projectID)"></i>
-    </td>
-  </tr>
+  <div *ngIf="!tonen"><i title="Toevoegen" class="far fa-plus-square fa-2x pointer text-white float-left pb-2"
+                         (click)="newProject()"></i></div>
+  <table class="table table-active table-light text-white">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Titel</th>
+      <th scope="col">Datum</th>
+      <th scope="col">zichtbaarheid</th>
+      <th scope="col">Beschrijving</th>
+      <th scope="col" width="100px">Acties</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let project of projects | paginate: config">
+      <th scope="row">{{project.projectID}}</th>
+      <td>{{project.title}}</td>
+      <td>{{project.datum}}</td>
+      <td *ngIf="project.show">Zichtbaar</td>
+      <td *ngIf="!project.show">Verborgen</td>
+      <td *ngIf="project.description.length >= 30">{{project.description.substr(0, 30)}}
+        ...
+      </td>
+      <td *ngIf="project.description.length < 30">{{project.description}}</td>
+      <td>
+        <i class="fas fa-pencil-alt fa-lg pointer" title="Delete" (click)="edit(project.projectID)"></i>&nbsp;
+        <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(project.projectID)"></i>
+      </td>
+    </tr>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
+  <pagination-controls class="float-right" (pageChange)="pageChanged($event)"></pagination-controls>
 </div>

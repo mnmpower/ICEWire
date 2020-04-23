@@ -7,7 +7,7 @@ import {Project} from '../models/project.model';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService {
+export class pre {
 
   private baseUrl = this.variablesService.getAPIBase_URL();
 

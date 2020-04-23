@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Project} from '../../models/project.model';
 import {Category} from '../../models/category.model';
 import {Person} from '../../models/person.model';
-import {ProjectService} from '../../services/project.service';
+import {pre} from '../../services/project.service';
 import {AdminService} from '../../services/admin.service';
 import {CategoryService} from '../../services/category.service';
 import {PersonService} from '../../services/person.service';
@@ -14,6 +14,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./table-person-crud.component.scss']
 })
 export class TablePersonCrudComponent implements OnInit {
+  config: any;
+  collection = {count: 0, data: []};
 
   emailError = 'Geen geldig email address!';
   valideEmail = true;
@@ -36,11 +38,22 @@ export class TablePersonCrudComponent implements OnInit {
       }
     });
     this.loadPersons();
+
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.collection.count
+    };
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
   loadPersons() {
     this.personService.getPersons().subscribe(r => {
       this.persons = r;
+      this.collection = {count: this.persons.length, data: this.persons};
     });
   }
 
@@ -66,7 +79,7 @@ export class TablePersonCrudComponent implements OnInit {
 
   delete(personID: number) {
     this.personService.getPerson(personID).subscribe(r => {
-      const answer = confirm('Bent u zeker dat u ' + r.firstName + r.lastName + ' wilt verwijderen?');
+      const answer = confirm('Bent u zeker dat u ' + r.firstName + ' ' + r.lastName + ' wilt verwijderen?');
       if (answer === true) {
         this.personService.delete(personID).subscribe(re => {
           this.loadPersons();
@@ -86,7 +99,7 @@ export class TablePersonCrudComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.person.email.includes('@')){
+    if (!this.person.email.includes('@')) {
       this.valideEmail = false;
       return;
     }

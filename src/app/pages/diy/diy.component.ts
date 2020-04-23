@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from '../../models/project.model';
-import {ProjectService} from '../../services/project.service';
+import {pre} from '../../services/project.service';
 
 @Component({
   selector: 'app-diy',
@@ -12,7 +12,7 @@ export class DIYComponent implements OnInit {
   project: Project = new Project();
 
   constructor(
-    private projectService: ProjectService,
+    private projectService: pre,
   ) {
     this.projectService.getProjectsWhereShowIsTrue().subscribe(r => {
       this.projecten = r;

@@ -1,0 +1,126 @@
+<div *ngIf="tonen" class="text-left text-white">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title: </label>
+      <input type="text" class="form-control" id="title"
+             placeholder="Vul een title in"
+             [(ngModel)]="initiatif.title" name="title" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="datum">Statdatum: </label>
+      <input type="text" class="form-control" id="datum"
+             placeholder="DD/MM/YYYY"
+             [(ngModel)]="initiatif.startDate" name="datum" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="Locatie">Locatie: </label>
+      <input type="text" class="form-control" id="Locatie"
+             placeholder="Vul een locatie in"
+             [(ngModel)]="initiatif.location" name="Locatie" required/>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="about">Korte beschrijving: </label>
+      <textarea type="text" class="form-control" id="about"
+                placeholder="Vul een korte bechrijving in"
+                [(ngModel)]="initiatif.about" name="about" required></textarea>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="Task">Volledige taakomschrijving: </label>
+      <textarea type="text" class="form-control" id="Task"
+                placeholder="Vul een taakomschrijving in"
+                [(ngModel)]="initiatif.taskDescription" name="Task" required></textarea>
+    </div>
+
+<!--    <div class="form-group mt-1 ">-->
+<!--      <label>Afbeelding:</label>-->
+<!--      <label for="fileUpload" class="custom-fileUpload vc-prepare childDiv">-->
+<!--        <i class="material-icons md-18 mr-3 vertical-center">cloud_upload</i>Upload een foto-->
+<!--        <input id="fileUpload" type="file" accept="image/*" (change)="fileChangeEvent($event)"/>-->
+<!--      </label>-->
+<!--    </div>-->
+
+    <div class="form-group mt-1">
+      <label for="person">Persoon: </label>
+      <select class="form-control" name="person" id="person" [(ngModel)]="initiatif.personID">
+        <option value="0">--- Selecteer een persoon ---</option>
+        <option *ngFor="let p of persons" value="{{p.personID}}">{{p.firstName}} {{p.lastName}}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="category">Categorie: </label>
+      <select class="form-control" name="category" id="category" [(ngModel)]="initiatif.categoryID">
+        <option value="0">--- Selecteer een category ---</option>
+        <option *ngFor="let c of categories" value="{{c.categoryID}}">{{c.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="status">Status: </label>
+      <select class="form-control" name="status" id="status" [(ngModel)]="initiatif.statusID">
+        <option value="0">--- Selecteer een status ---</option>
+        <option *ngFor="let s of statuses" value="{{s.statusID}}">{{s.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="show">Zichtbaarheid: </label>
+      <select class="form-control" name="show" id="show" [(ngModel)]="initiatif.confirmed">
+        <option value="{{true}}">Tonen</option>
+        <option value="{{false}}">Verbergen</option>
+      </select>
+    </div>
+
+    <br/>
+    <div class="red h5 text-center" *ngIf="valideImage">{{imageError}}</div>
+    <div class="red h5 text-center" *ngIf="invalideForm">Vul alle velden in aub!</div>
+    <br/>
+    <div class="float-right pb-3">
+      <button (click)="closePopup()" class="btn btn-primary">Annuleren</button>
+      <button *ngIf="initiatif.initiatifID == 0" type="submit" class="btn  ">Toevoegen</button>
+      <button *ngIf="initiatif.initiatifID != 0" type="submit" class="btn btn-primary">Updaten</button>
+    </div>
+  </form>
+</div>
+
+
+<!--TABLE HIER-->
+<div *ngIf="!tonen">
+  <div *ngIf="!tonen"><i title="Toevoegen" class="far fa-plus-square fa-2x pointer text-white float-left pb-2"
+                         (click)="newInitiatif()"></i></div>
+  <table class="table table-active table-light text-white">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Titel</th>
+      <th scope="col">Datum</th>
+      <th scope="col">Zichtbaarheid</th>
+      <th scope="col">Beschrijving</th>
+      <th scope="col" width="100px">Acties</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let initiatif of initiatifs | paginate: config">
+      <th scope="row">{{initiatif.initiatifID}}</th>
+      <td>{{initiatif.title}}</td>
+      <td>{{initiatif.startDate}}</td>
+      <td *ngIf="initiatif.confirmed">Verborgen</td>
+      <td *ngIf="!initiatif.confirmed"> Zichtbaar </td>
+      <td *ngIf="initiatif.about.length >= 30">{{initiatif.about.substr(0, 30)}}
+        ...
+      </td>
+      <td *ngIf="initiatif.about.length < 30">{{initiatif.about}}</td>
+      <td>
+        <i class="fas fa-pencil-alt fa-lg pointer" title="Delete" (click)="edit(initiatif.initiatifID)"></i>&nbsp;
+        <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(initiatif.initiatifID)"></i>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+  <pagination-controls class="float-right" (pageChange)="pageChanged($event)"></pagination-controls>
+</div>

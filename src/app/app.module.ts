@@ -15,7 +15,7 @@ import {VariablesService} from './shared/variables.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AdminComponent} from './pages/admin/admin.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ProjectService} from './services/project.service';
+import {pre} from './services/project.service';
 import {BeheerProjectenComponent} from './pages/admin/CRUD/beheer-projecten/beheer-projecten.component';
 import {TableProjectsCrudComponent} from './components/table-projects-crud/table-projects-crud.component';
 import {ForbiddenComponent} from './pages/forbidden/forbidden.component';
@@ -29,6 +29,14 @@ import {BeheerStatussenComponent} from './pages/admin/CRUD/beheer-statussen/behe
 import {BeheerChallangeComponent} from './pages/admin/CRUD/beheer-challange/beheer-challange.component';
 import {BeheerAdminsComponent} from './pages/admin/CRUD/beheer-admins/beheer-admins.component';
 import {TablePersonCrudComponent} from './components/table-person-crud/table-person-crud.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {TableStatusCrudComponent} from './components/table-status-crud/table-status-crud.component';
+import {TableCategoryCrudComponent} from './components/table-category-crud/table-category-crud.component';
+import {CategoryService} from './services/category.service';
+import {StatusService} from './services/status.service';
+import {InitiatifService} from './services/initiatif.service';
+import {PersonService} from './services/person.service';
+import { TableInitiatifCrudComponent } from './components/table-initiatif-crud/table-initiatif-crud.component';
 
 
 @NgModule({
@@ -51,7 +59,10 @@ import {TablePersonCrudComponent} from './components/table-person-crud/table-per
     BeheerStatussenComponent,
     BeheerChallangeComponent,
     BeheerAdminsComponent,
-    TablePersonCrudComponent
+    TablePersonCrudComponent,
+    TableStatusCrudComponent,
+    TableCategoryCrudComponent,
+    TableInitiatifCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +72,7 @@ import {TablePersonCrudComponent} from './components/table-person-crud/table-per
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -69,7 +81,11 @@ import {TablePersonCrudComponent} from './components/table-person-crud/table-per
   },
     NeedAuthGuard,
     VariablesService,
-    ProjectService
+    pre,
+    CategoryService,
+    StatusService,
+    InitiatifService,
+    PersonService,
   ],
   exports: [],
   bootstrap: [AppComponent]

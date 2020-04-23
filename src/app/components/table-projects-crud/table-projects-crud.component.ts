@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ProjectService} from '../../services/project.service';
+import {pre} from '../../services/project.service';
 import {Project} from '../../models/project.model';
 import {AdminService} from '../../services/admin.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -14,6 +14,8 @@ import {PersonService} from '../../services/person.service';
   styleUrls: ['./table-projects-crud.component.scss']
 })
 export class TableProjectsCrudComponent implements OnInit {
+  config: any;
+  collection = {count: 0, data: []};
 
   imageError = '';
   isImageSaved = false;
@@ -28,7 +30,7 @@ export class TableProjectsCrudComponent implements OnInit {
   project: Project = new Project();
 
   constructor(
-    private projectService: ProjectService,
+    private projectService: pre,
     private adminService: AdminService,
     private categoryService: CategoryService,
     private personService: PersonService,
@@ -43,11 +45,22 @@ export class TableProjectsCrudComponent implements OnInit {
     this.loadProjects();
     this.loadCategories();
     this.loadPersons();
+
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.collection.count
+    };
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
   loadProjects() {
     this.projectService.getProjects().subscribe(r => {
       this.projects = r;
+      this.collection = {count: this.projects.length, data: this.projects};
     });
   }
 
@@ -91,7 +104,7 @@ export class TableProjectsCrudComponent implements OnInit {
 
   delete(projectID: number) {
     this.projectService.getProject(projectID).subscribe(r => {
-      const answer = confirm('Bent u zeker dat u ' + r.title + 'wilt verwijderen?');
+      const answer = confirm('Bent u zeker dat u ' + r.title + ' wilt verwijderen?');
       if (answer === true) {
         this.projectService.delete(projectID).subscribe(re => {
           this.loadProjects();

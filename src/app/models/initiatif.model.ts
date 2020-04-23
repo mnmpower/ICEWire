@@ -6,10 +6,10 @@ export class Initiatif {
 
   public initiatifID: number;
   public title: string;
-  public statDate: string;
+  public startDate: string;
   public about: string;
   public taskDescription: string;
-  public cornfirmed: string;
+  public confirmed: boolean;
   public location: string;
   public personID: number;
   public statusID: number;
