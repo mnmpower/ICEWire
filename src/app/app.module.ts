@@ -17,17 +17,18 @@ import {AdminComponent} from './pages/admin/admin.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProjectService} from './services/project.service';
 import {BeheerProjectenComponent} from './pages/admin/CRUD/beheer-projecten/beheer-projecten.component';
-import { TableProjectsCrudComponent } from './components/table-projects-crud/table-projects-crud.component';
-import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
+import {TableProjectsCrudComponent} from './components/table-projects-crud/table-projects-crud.component';
+import {ForbiddenComponent} from './pages/forbidden/forbidden.component';
 import {SecurityInterceptor} from './shared/security/security.interceptor';
 import {NeedAuthGuard} from './shared/security/need-auth-guard';
-import { AdminMenuComponent } from './pages/admin/admin-menu/admin-menu.component';
-import { BeheerPersonenComponent } from './pages/admin/CRUD/beheer-personen/beheer-personen.component';
-import { BeheerInitiatievenComponent } from './pages/admin/CRUD/beheer-initiatieven/beheer-initiatieven.component';
-import { BeheerCategorieenComponent } from './pages/admin/CRUD/beheer-categorieen/beheer-categorieen.component';
-import { BeheerStatussenComponent } from './pages/admin/CRUD/beheer-statussen/beheer-statussen.component';
-import { BeheerChallangeComponent } from './pages/admin/CRUD/beheer-challange/beheer-challange.component';
-import { BeheerAdminsComponent } from './pages/admin/CRUD/beheer-admins/beheer-admins.component';
+import {AdminMenuComponent} from './pages/admin/admin-menu/admin-menu.component';
+import {BeheerPersonenComponent} from './pages/admin/CRUD/beheer-personen/beheer-personen.component';
+import {BeheerInitiatievenComponent} from './pages/admin/CRUD/beheer-initiatieven/beheer-initiatieven.component';
+import {BeheerCategorieenComponent} from './pages/admin/CRUD/beheer-categorieen/beheer-categorieen.component';
+import {BeheerStatussenComponent} from './pages/admin/CRUD/beheer-statussen/beheer-statussen.component';
+import {BeheerChallangeComponent} from './pages/admin/CRUD/beheer-challange/beheer-challange.component';
+import {BeheerAdminsComponent} from './pages/admin/CRUD/beheer-admins/beheer-admins.component';
+import {TablePersonCrudComponent} from './components/table-person-crud/table-person-crud.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { BeheerAdminsComponent } from './pages/admin/CRUD/beheer-admins/beheer-a
     BeheerCategorieenComponent,
     BeheerStatussenComponent,
     BeheerChallangeComponent,
-    BeheerAdminsComponent
+    BeheerAdminsComponent,
+    TablePersonCrudComponent
   ],
   imports: [
     BrowserModule,

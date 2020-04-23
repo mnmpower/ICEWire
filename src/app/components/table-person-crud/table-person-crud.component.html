@@ -1,0 +1,75 @@
+<div *ngIf="tonen" class="text-left text-white">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="Voornaam">Voornaam: </label>
+      <input type="text" class="form-control" id="Voornaam"
+             placeholder="Vul een voornaam in"
+             [(ngModel)]="person.firstName" name="Voornaam" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="Achternaam">Achternaam: </label>
+      <input type="text" class="form-control" id="Achternaam"
+             placeholder="Vul een achternaam in"
+             [(ngModel)]="person.lastName" name="Achternaam" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="Telefoonnummer">Telefoonnummer: </label>
+      <input type="text" class="form-control" id="Telefoonnummer"
+             placeholder="+32 498 55 66 77"
+             [(ngModel)]="person.phoneNumber" name="Telefoonnummer" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="Email">Email: </label>
+      <input type="email" class="form-control" id="Email"
+             placeholder="Vul een geldig achternaam in"
+             [(ngModel)]="person.email" name="Email" required>
+    </div>
+
+
+
+    <br/>
+    <div class="red h5 text-center" *ngIf="!valideEmail">{{emailError}}</div>
+    <div class="red h5 text-center" *ngIf="invalideForm">Vul alle velden in aub!</div>
+    <br/>
+    <div class="float-right pb-3">
+      <button (click)="closePopup()" class="btn btn-primary">Annuleren</button>
+      <button *ngIf="person.personID == 0" type="submit" class="btn  ">Toevoegen</button>
+      <button *ngIf="person.personID != 0" type="submit" class="btn btn-primary">Updaten</button>
+    </div>
+  </form>
+</div>
+
+
+<!--TABLE HIER-->
+<div *ngIf="!tonen">
+  <div *ngIf="!tonen" ><i title="Toevoegen" class="far fa-plus-square fa-2x pointer text-white float-left pb-2" (click)="newProject()"></i></div>
+  <table class="table table-active table-light text-white">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Voornaam</th>
+      <th scope="col">Achternaam</th>
+      <th scope="col">Email</th>
+      <th scope="col">Tel</th>
+      <th scope="col" width="100px">Acties</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let person of persons"  >
+      <th scope="row">{{person.personID}}</th>
+      <td>{{person.firstName}}</td>
+      <td>{{person.lastName}}</td>
+      <td >{{person.email}}</td>
+      <td>{{person.phoneNumber}}</td>
+      <td>
+        <i class="fas fa-pencil-alt fa-lg pointer" title="Delete" (click)="edit(person.personID)"></i>&nbsp;
+        <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(person.personID)"></i>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
