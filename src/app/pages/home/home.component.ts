@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ChalangeService} from '../../services/chalange.service';
+import {Chalange} from '../../models/chalange.model';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +9,21 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  weaklyChalange: string;
+  weaklyChalange: Chalange = new Chalange();
 
-  constructor() {
+  constructor(
+    private chalangeService: ChalangeService,
+  ) {
+    this.chalangeService.getActiveChalange().subscribe(
+      result => {
+        this.weaklyChalange = result;
+      },
+      error => {
+        this.weaklyChalange.text = 'Er is geen chalange beschikbaar momenteel';
+      });
   }
 
   ngOnInit(): void {
-    this.weaklyChalange = 'Maak een driegangenmenu voor iemand van jouw famillie. Maak een leuke ' +
-      'sfeerfoto tijdens elke menugang van het eten en stuur deze door. Wij maken van alle inzendingen een leuk ' +
-      'filmpje zodat je ook kan zien wat andere mensen gedaan hebben.';
   }
 
 }

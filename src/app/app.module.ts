@@ -37,6 +37,8 @@ import {StatusService} from './services/status.service';
 import {InitiatifService} from './services/initiatif.service';
 import {PersonService} from './services/person.service';
 import { TableInitiatifCrudComponent } from './components/table-initiatif-crud/table-initiatif-crud.component';
+import { TableAdminCrudComponent } from './components/table-admin-crud/table-admin-crud.component';
+import { TableChalangeCrudComponent } from './components/table-chalange-crud/table-chalange-crud.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { TableInitiatifCrudComponent } from './components/table-initiatif-crud/t
     TablePersonCrudComponent,
     TableStatusCrudComponent,
     TableCategoryCrudComponent,
-    TableInitiatifCrudComponent
+    TableInitiatifCrudComponent,
+    TableAdminCrudComponent,
+    TableChalangeCrudComponent
   ],
   imports: [
     BrowserModule,

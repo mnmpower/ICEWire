@@ -1,0 +1,57 @@
+<div *ngIf="tonen" class="text-left text-white">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="Tekst">Tekst: </label>
+      <textarea type="text" class="form-control" id="Tekst"
+             placeholder="Vul een chalange in"
+                [(ngModel)]="chalange.text" name="Tekst" required></textarea>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="show">Zichtbaarheid: </label>
+      <select class="form-control" name="show" id="show" [(ngModel)]="chalange.active">
+        <option value="{{true}}">Actief</option>
+        <option value="{{false}}">Verbergen</option>
+      </select>
+    </div>
+
+    <br/>
+    <div class="red h5 text-center" *ngIf="invalideForm">Vul alle velden in aub!</div>
+    <br/>
+    <div class="float-right pb-3">
+      <button (click)="closePopup()" class="btn btn-primary">Annuleren</button>
+      <button *ngIf="chalange.chalangeID == 0" type="submit" class="btn  ">Toevoegen</button>
+      <button *ngIf="chalange.chalangeID != 0" type="submit" class="btn btn-primary">Updaten</button>
+    </div>
+  </form>
+</div>
+
+
+<!--TABLE HIER-->
+<div *ngIf="!tonen">
+  <div *ngIf="!tonen" ><i title="Toevoegen" class="far fa-plus-square fa-2x pointer text-white float-left pb-2" (click)="newChalange()"></i></div>
+  <table class="table table-active table-light text-white">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">tekst</th>
+      <th scope="col">Actief</th>
+      <th scope="col" width="100px">Acties</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let chalange of chalanges | paginate: config"  >
+      <th scope="row">{{chalange.chalangeID}}</th>
+      <td>{{chalange.text}}</td>
+      <td *ngIf="chalange.active">Active</td>
+      <td *ngIf="!chalange.active"> - </td>
+      <td>
+        <i class="fas fa-pencil-alt fa-lg pointer" title="Delete" (click)="edit(chalange.chalangeID)"></i>&nbsp;
+        <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(chalange.chalangeID)"></i>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+  <pagination-controls class="float-right" (pageChange)="pageChanged($event)"></pagination-controls>
+</div>

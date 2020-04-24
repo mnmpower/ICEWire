@@ -1,0 +1,83 @@
+<div *ngIf="tonen" class="text-left text-white">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="Voornaam">Voornaam: </label>
+      <input type="text" class="form-control" id="Voornaam"
+             placeholder="Vul een voornaam in"
+             [(ngModel)]="admin.firstName" name="Voornaam" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="Achternaam">Achternaam: </label>
+      <input type="text" class="form-control" id="Achternaam"
+             placeholder="Vul een achternaam in"
+             [(ngModel)]="admin.lastName" name="Achternaam" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="Email">Email: </label>
+      <input type="email" class="form-control" id="Email"
+             placeholder="Vul een geldige email in"
+             [(ngModel)]="admin.email" name="Email" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="password">Wachtwoord: </label>
+      <input type="password" class="form-control" id="password"
+             placeholder="Vul een STERK wachtwoord in!"
+             [(ngModel)]="admin.password" name="password" required>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="password2">Herhaling wachtwoord: </label>
+      <input type="password" class="form-control" id="password2"
+             placeholder="herhaling wachtwoord"
+             [(ngModel)]="passwordRepeat" name="password2" required>
+    </div>
+
+
+    <br/>
+    <div class="red h5 text-center" *ngIf="!valideEmail">{{emaiError}}</div>
+    <div class="red h5 text-center" *ngIf="!validePassword">{{passwordError}}</div>
+    <div class="red h5 text-center" *ngIf="invalideForm">Vul alle velden in aub!</div>
+    <br/>
+    <div class="float-right pb-3">
+      <button (click)="closePopup()" class="btn btn-primary">Annuleren</button>
+      <button *ngIf="admin.adminID == 0" type="submit" class="btn  ">Toevoegen</button>
+      <button *ngIf="admin.adminID != 0" type="submit" class="btn btn-primary">Updaten</button>
+    </div>
+  </form>
+</div>
+
+
+<!--TABLE HIER-->
+<div *ngIf="!tonen">
+  <div *ngIf="!tonen"><i title="Toevoegen" class="far fa-plus-square fa-2x pointer text-white float-left pb-2"
+                         (click)="newAdmin()"></i></div>
+  <table class="table table-active table-light text-white">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Voornaam</th>
+      <th scope="col">Achternaam</th>
+      <th scope="col">Email</th>
+      <th scope="col" width="100px">Acties</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let admin of admins | paginate: config">
+      <th scope="row">{{admin.adminID}}</th>
+      <td>{{admin.firstName}}</td>
+      <td>{{admin.lastName}}</td>
+      <td>{{admin.email}}</td>
+      <td>
+        <i class="fas fa-pencil-alt fa-lg pointer" title="Delete" (click)="edit(admin.adminID)"></i>&nbsp;
+        <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(admin.adminID)"></i>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+  <pagination-controls class="float-right" (pageChange)="pageChanged($event)"></pagination-controls>
+</div>
+<p>table-admin-crud works!</p>

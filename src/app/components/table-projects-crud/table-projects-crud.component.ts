@@ -163,11 +163,10 @@ export class TableProjectsCrudComponent implements OnInit {
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
       // Size Filter Bytes
-      // const max_size = 20971520;
-      const max_size = 409600;
+      const max_size = 1024 * 200;
       const allowed_types = ['image/png', 'image/jpeg', 'image/jpg'];
-      const max_height = 360 *2;
-      const max_width = 640 *2;
+      const max_height = 360;
+      const max_width = 640;
 
       console.log('size:', fileInput.target.files[0].size);
       console.log('MAX-size:', max_size);
