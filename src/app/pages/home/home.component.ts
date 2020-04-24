@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private chalangeService: ChalangeService,
   ) {
+    this.weaklyChalange.text = 'Er is geen chalange beschikbaar momenteel';
     this.chalangeService.getActiveChalange().subscribe(
       result => {
         this.weaklyChalange = result;
