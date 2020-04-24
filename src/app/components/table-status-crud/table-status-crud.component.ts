@@ -45,10 +45,18 @@ export class TableStatusCrudComponent implements OnInit {
   }
 
   loadStatuses() {
-    this.statusService.getStatusen().subscribe(r => {
-      this.statusen = r;
-      this.collection = {count: this.statusen.length, data: this.statusen};
+
+    this.adminService.getAdmins().subscribe(r => {
+      this.statusService.getStatusen().subscribe(r => {
+        this.statusen = r;
+        if (this.activatedroute.snapshot.paramMap.get('id') !== '1') {
+          this.statusen = [];
+        }
+        this.collection = {count: this.statusen.length, data: this.statusen};
+      });
+
     });
+
   }
 
   ngOnInit(): void {
