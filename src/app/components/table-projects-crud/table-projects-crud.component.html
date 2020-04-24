@@ -98,7 +98,7 @@
       </td>
       <td *ngIf="project.description.length < 30">{{project.description}}</td>
       <td>
-        <i class="fas fa-pencil-alt fa-lg pointer" title="Delete" (click)="edit(project.projectID)"></i>&nbsp;
+        <i class="fas fa-pencil-alt fa-lg pointer" title="Edit" (click)="edit(project.projectID)"></i>&nbsp;
         <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(project.projectID)"></i>
       </td>
     </tr>
