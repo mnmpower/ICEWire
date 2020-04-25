@@ -5,7 +5,7 @@
     background-color: #B2AFAB;
     background-position: center center;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 50vh;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -235,14 +235,7 @@
         opacity: 1;
     }
 }
-.angular-logo{
-    max-width: 30vw;
-    margin: 100px auto 45px auto;
 
-    img{
-        width: 100%;
-    }
-}
 .page-header{
     .content-center{
         //margin-top: 85px;

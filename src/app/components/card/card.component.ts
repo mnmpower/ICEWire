@@ -5,7 +5,7 @@ import {Component, Input, OnInit} from '@angular/core';
   // templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   template: `
-    <div class="card m-3">
+    <div class="card">
       <img src="{{img}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{title}}</h5>

@@ -1,16 +1,13 @@
 <!-- Page Content -->
-<div class="wrapper">
+<div class="wrapper ">
   <div class="page-header section-dark" style="background-image: url('assets/img/bg-diy.jpg')">
     <div class="filter"></div>
     <div class="content-center">
       <div class="container">
         <div class="title-brand">
           <div class="angular-logo w-50">
-            <object class="embed-responsive" type="image/svg+xml" data="assets/img/ICEWireLogo.svg">
-              Your browser does not support SVG.
-            </object>
           </div>
-          <h1 class="presentation-title">ICE Wire DIY</h1>
+          <h1 class="presentation-title not-in-navbar">ICE Wire DIY</h1>
         </div>
 
         <h2 class="presentation-subtitle text-center">Do It Yourself</h2>
@@ -20,9 +17,9 @@
 
   <div class="container main">
     <!-- Page Features -->
-    <div class="row">
+    <div class="row m-0">
 
-      <div class="row card-deck mt-5 mb-5">
+      <div class="row card-deck mt-5 mb-5 ml-2 mr-2">
 
         <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let p of projecten">
           <app-card description="{{p.description}}" link="{{p.link}}" title="{{p.title}}" img="{{p.img}}" date="{{p.datum}}"></app-card>

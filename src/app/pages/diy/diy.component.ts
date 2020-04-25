@@ -15,7 +15,7 @@ export class DIYComponent implements OnInit {
     private projectService: pre,
   ) {
     this.projectService.getProjectsWhereShowIsTrue().subscribe(r => {
-      this.projecten = r;
+      this.projecten = r.reverse();
     });
   }
 
