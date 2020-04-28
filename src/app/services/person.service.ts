@@ -24,6 +24,10 @@ export class PersonService {
     });
   }
 
+  getPersonsWhereDiy(): Observable<Person[]> {
+    return this.http.get<Person[]>(this.baseUrl + 'people/diy');
+  }
+
   updatePerson(person: Person) {
     return this.http.put<Person>(this.baseUrl + 'people/' + person.personID, person, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))

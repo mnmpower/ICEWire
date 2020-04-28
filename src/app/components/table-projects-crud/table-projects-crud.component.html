@@ -20,6 +20,7 @@
         <input id="fileUpload" type="file" accept="image/*" (change)="fileChangeEvent($event)"/>
       </label>
     </div>
+
     <div class="form-group mt-1">
       <label for="link">Link: </label>
       <input type="text" class="form-control" id="link"
@@ -43,6 +44,23 @@
       </select>
     </div>
 
+
+    <div class="form-group mt-1">
+      <label for="person">Leeftijdscategorie: </label>
+      <select class="form-control" name="Leeftijdscategorie" id="Leeftijdscategorie" [(ngModel)]="project.ageCategoryID">
+        <option value="0">--- Selecteer een leeftijdscategorie ---</option>
+        <option *ngFor="let a of ageCategories" value="{{a.ageCategoryID}}">{{a.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-1">
+      <label for="person">Tijdsduur: </label>
+      <select class="form-control" name="Tijdsduur" id="Tijdsduur" [(ngModel)]="project.durationID">
+        <option value="0">--- Selecteer een tijdsduur ---</option>
+        <option *ngFor="let d of durations" value="{{d.durationID}}">{{d.name}}</option>
+      </select>
+    </div>
+
     <div class="form-group mt-1">
       <label for="description">Korte beschrijving: </label>
       <textarea type="text" class="form-control" id="description"
@@ -60,7 +78,7 @@
 
     <br/>
     <div class="red h5 text-center" *ngIf="valideImage">{{imageError}}</div>
-    <div class="red h5 text-center" *ngIf="invalideForm">Vul alle velden in aub!</div>
+    <div class="red h5 text-center" *ngIf="invalideForm">{{error}}</div>
     <br/>
     <div class="float-right pb-3">
       <button (click)="closePopup()" class="btn btn-primary">Annuleren</button>

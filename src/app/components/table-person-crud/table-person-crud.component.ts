@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Project} from '../../models/project.model';
 import {Category} from '../../models/category.model';
 import {Person} from '../../models/person.model';
-import {pre} from '../../services/project.service';
+import {ProjectService} from '../../services/project.service';
 import {AdminService} from '../../services/admin.service';
 import {CategoryService} from '../../services/category.service';
 import {PersonService} from '../../services/person.service';
@@ -67,6 +67,7 @@ export class TablePersonCrudComponent implements OnInit {
     this.person.lastName = null;
     this.person.email = null;
     this.person.phoneNumber = null;
+    this.person.diy = false;
     this.openPopup();
   }
 

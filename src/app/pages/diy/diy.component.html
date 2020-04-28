@@ -17,12 +17,57 @@
 
   <div class="container main">
     <!-- Page Features -->
-    <div class="row m-0">
+    <div class="m-0 ">
+<!--      <button (click)="toggleSearch()" class="m-4 btn btn-info">Geavanceerd zoeken</button>-->
 
-      <div class="row card-deck mt-5 mb-5 ml-2 mr-2">
+      <div class="row m-3">
 
-        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let p of projecten">
-          <app-card description="{{p.description}}" link="{{p.link}}" title="{{p.title}}" img="{{p.img}}" date="{{p.datum}}"></app-card>
+        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+          <label for="zoekCategory">Zoek op category</label>
+          <select class="form-control" name="zoekCategory" id="zoekCategory" [(ngModel)]="zoekobject.categoryID" (change)="zoek()">
+            <option value="0">--- Alle categorieën ---</option>
+            <option *ngFor="let c of categories" value="{{c.categoryID}}">{{c.name}}</option>
+          </select>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+          <label for="zoekUitvoerder">Zoek op uitvoerder</label>
+          <select class="form-control" name="zoekUitvoerder" id="zoekUitvoerder" [(ngModel)]="zoekobject.personID" (change)="zoek()">
+            <option value="0">--- Alle uitvoerders ---</option>
+            <option *ngFor="let p of persons" value="{{p.personID}}">{{p.firstName}} {{p.lastName}}</option>
+          </select>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+          <label for="zoektijdsduur">Zoek op Tijdsduur</label>
+          <select class="form-control" name="zoektijdsduur" id="zoektijdsduur" [(ngModel)]="zoekobject.durationID" (change)="zoek()">
+            <option value="0">--- Alle Tijdsduren ---</option>
+            <option *ngFor="let d of durations" value="{{d.durationID}}">{{d.name}}</option>
+          </select>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+          <label for="zoekleeftijd">Zoek op leeftijd</label>
+          <select class="form-control" name="zoekleeftijd" id="zoekleeftijd" [(ngModel)]="zoekobject.ageCategoryID" (change)="zoek()">
+            <option value="0">--- Alle leeftijden ---</option>
+            <option *ngFor="let a of ageCategories" value="{{a.ageCategoryID}}">{{a.name}}</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="row mb-5 ml-2 mr-2">
+
+        <h1 *ngIf="projecten.length == 0">Geen zoekresultaten beschikbaar</h1>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mb-3" *ngFor="let p of projecten">
+          <app-card description="{{p.description}}"
+                    link="{{p.link}}"
+                    title="{{p.title}}"
+                    img="{{p.img}}"
+                    age="{{p.ageCategory.name}}"
+                    time="{{p.duration.name}}"
+                    date="{{p.datum}}"></app-card>
         </div>
       </div>
 

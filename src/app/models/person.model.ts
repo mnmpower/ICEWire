@@ -8,6 +8,7 @@ export class Person {
   public lastName: string;
   public email: string;
   public phoneNumber: string;
+  public diy: boolean;
 
   public projects: Project[];
   public initiatives: Initiatif[];

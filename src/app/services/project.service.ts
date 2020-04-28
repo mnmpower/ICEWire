@@ -3,11 +3,12 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {VariablesService} from '../shared/variables.service';
 import {Observable} from 'rxjs';
 import {Project} from '../models/project.model';
+import {ZoekProject} from '../models/zoek-project.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class pre {
+export class ProjectService {
 
   private baseUrl = this.variablesService.getAPIBase_URL();
 
@@ -49,5 +50,9 @@ export class pre {
     return this.http.put<Project>(this.baseUrl + 'projects/' + project.projectID, project, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     });
+  }
+
+  zoek(zoekobject: ZoekProject): Observable<Project[]> {
+    return this.http.post<Project[]>(this.baseUrl + 'projects/zoek', zoekobject);
   }
 }

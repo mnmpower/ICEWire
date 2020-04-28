@@ -14,6 +14,8 @@ import {BeheerCategorieenComponent} from './pages/admin/CRUD/beheer-categorieen/
 import {BeheerStatussenComponent} from './pages/admin/CRUD/beheer-statussen/beheer-statussen.component';
 import {BeheerChallangeComponent} from './pages/admin/CRUD/beheer-challange/beheer-challange.component';
 import {BeheerAdminsComponent} from './pages/admin/CRUD/beheer-admins/beheer-admins.component';
+import {BeheerTijdsduurComponent} from './pages/admin/CRUD/beheer-tijdsduur/beheer-tijdsduur.component';
+import {BeheerLeeftijdComponent} from './pages/admin/CRUD/beheer-leeftijd/beheer-leeftijd.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,8 @@ const routes: Routes = [
   {path: 'beheerStatussen/:id', component: BeheerStatussenComponent, canActivate: [NeedAuthGuard]},
   {path: 'beheerWeaklyChallange/:id', component: BeheerChallangeComponent, canActivate: [NeedAuthGuard]},
   {path: 'beheerAdmins/:id', component: BeheerAdminsComponent, canActivate: [NeedAuthGuard]},
+  {path: 'beheerLeeftijd/:id', component: BeheerLeeftijdComponent, canActivate: [NeedAuthGuard]},
+  {path: 'beheerTijdsduur/:id', component: BeheerTijdsduurComponent, canActivate: [NeedAuthGuard]},
 
   // Error Pages
   {path: 'forbidden', component: ForbiddenComponent},

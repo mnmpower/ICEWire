@@ -15,7 +15,7 @@ import {VariablesService} from './shared/variables.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AdminComponent} from './pages/admin/admin.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {pre} from './services/project.service';
+import {ProjectService} from './services/project.service';
 import {BeheerProjectenComponent} from './pages/admin/CRUD/beheer-projecten/beheer-projecten.component';
 import {TableProjectsCrudComponent} from './components/table-projects-crud/table-projects-crud.component';
 import {ForbiddenComponent} from './pages/forbidden/forbidden.component';
@@ -39,6 +39,12 @@ import {PersonService} from './services/person.service';
 import { TableInitiatifCrudComponent } from './components/table-initiatif-crud/table-initiatif-crud.component';
 import { TableAdminCrudComponent } from './components/table-admin-crud/table-admin-crud.component';
 import { TableChalangeCrudComponent } from './components/table-chalange-crud/table-chalange-crud.component';
+import { BeheerLeeftijdComponent } from './pages/admin/CRUD/beheer-leeftijd/beheer-leeftijd.component';
+import { BeheerTijdsduurComponent } from './pages/admin/CRUD/beheer-tijdsduur/beheer-tijdsduur.component';
+import { TableDurationCrudComponent } from './components/table-duration-crud/table-duration-crud.component';
+import {DurationService} from './services/duration.service';
+import { TableLeeftijdCrudComponent } from './components/table-leeftijd-crud/table-leeftijd-crud.component';
+
 
 
 @NgModule({
@@ -66,7 +72,11 @@ import { TableChalangeCrudComponent } from './components/table-chalange-crud/tab
     TableCategoryCrudComponent,
     TableInitiatifCrudComponent,
     TableAdminCrudComponent,
-    TableChalangeCrudComponent
+    TableChalangeCrudComponent,
+    BeheerLeeftijdComponent,
+    BeheerTijdsduurComponent,
+    TableDurationCrudComponent,
+    TableLeeftijdCrudComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,11 +95,12 @@ import { TableChalangeCrudComponent } from './components/table-chalange-crud/tab
   },
     NeedAuthGuard,
     VariablesService,
-    pre,
+    ProjectService,
     CategoryService,
     StatusService,
     InitiatifService,
     PersonService,
+    DurationService
   ],
   exports: [],
   bootstrap: [AppComponent]

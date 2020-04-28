@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {pre} from '../../services/project.service';
+import {ProjectService} from '../../services/project.service';
 import {Project} from '../../models/project.model';
 import {AdminService} from '../../services/admin.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -7,6 +7,10 @@ import {Category} from '../../models/category.model';
 import {Person} from '../../models/person.model';
 import {CategoryService} from '../../services/category.service';
 import {PersonService} from '../../services/person.service';
+import {AgeCategoryService} from '../../services/age-category.service';
+import {DurationService} from '../../services/duration.service';
+import {Duration} from '../../models/duration.model';
+import {AgeCategory} from '../../models/age-category.model';
 
 @Component({
   selector: 'app-table-projects-crud',
@@ -18,6 +22,7 @@ export class TableProjectsCrudComponent implements OnInit {
   collection = {count: 0, data: []};
 
   imageError = '';
+  error = '';
   isImageSaved = false;
   valideImage = true;
 
@@ -27,13 +32,17 @@ export class TableProjectsCrudComponent implements OnInit {
   projects: Project[] = [];
   categories: Category[] = [];
   persons: Person[] = [];
+  durations: Duration[] = [];
+  ageCategories: AgeCategory[] = [];
   project: Project = new Project();
 
   constructor(
-    private projectService: pre,
+    private projectService: ProjectService,
     private adminService: AdminService,
     private categoryService: CategoryService,
     private personService: PersonService,
+    private ageCategoryService: AgeCategoryService,
+    private durationService: DurationService,
     private activatedroute: ActivatedRoute,
     private router: Router,
   ) {
@@ -45,6 +54,8 @@ export class TableProjectsCrudComponent implements OnInit {
     this.loadProjects();
     this.loadCategories();
     this.loadPersons();
+    this.loadDurations();
+    this.loadAceGategories();
 
     this.config = {
       itemsPerPage: 10,
@@ -71,8 +82,20 @@ export class TableProjectsCrudComponent implements OnInit {
   }
 
   loadPersons() {
-    this.personService.getPersons().subscribe(r => {
+    this.personService.getPersonsWhereDiy().subscribe(r => {
       this.persons = r;
+    });
+  }
+
+  private loadAceGategories() {
+    this.ageCategoryService.getAgeCategories().subscribe(r => {
+      this.ageCategories = r;
+    });
+  }
+
+  private loadDurations() {
+    this.durationService.getDurations().subscribe(r => {
+      this.durations = r;
     });
   }
 
@@ -89,6 +112,8 @@ export class TableProjectsCrudComponent implements OnInit {
     this.project.link = null;
     this.project.personID = 0;
     this.project.categoryID = 0;
+    this.project.ageCategoryID = 0;
+    this.project.durationID = 0;
     this.project.show = true;
     this.project.person = null;
     this.project.category = null;
@@ -98,6 +123,7 @@ export class TableProjectsCrudComponent implements OnInit {
   edit(projectID: number) {
     this.projectService.getProject(projectID).subscribe(r => {
       this.project = r;
+      console.log(this.project);
       this.openPopup();
     });
   }
@@ -127,20 +153,30 @@ export class TableProjectsCrudComponent implements OnInit {
     if (!this.valideImage) {
       return;
     }
+
+    if (this.project.img === ''
+      || this.project.img === null) {
+      this.error = 'Upload een image!';
+      this.invalideForm = true;
+      return;
+    }
+
+
     if (this.project.title === ''
       || this.project.datum === ''
-      || this.project.img === ''
       || this.project.link === ''
       || this.project.description === ''
       || this.project.title === null
       || this.project.datum === null
-      || this.project.img === null
       || this.project.link === null
       || this.project.description === null
       || this.project.personID == 0
       || this.project.categoryID == 0
+      || this.project.ageCategoryID == 0
+      || this.project.durationID == 0
     ) {
       this.invalideForm = true;
+      this.error = 'Vul alle velden in aub!';
       return;
     }
     this.invalideForm = false;
@@ -165,8 +201,8 @@ export class TableProjectsCrudComponent implements OnInit {
       // Size Filter Bytes
       const max_size = 1024 * 200;
       const allowed_types = ['image/png', 'image/jpeg', 'image/jpg'];
-      const max_height = 360;
-      const max_width = 640;
+      const max_height = 400;
+      const max_width = 800;
 
       console.log('size:', fileInput.target.files[0].size);
       console.log('MAX-size:', max_size);
@@ -211,4 +247,5 @@ export class TableProjectsCrudComponent implements OnInit {
       reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
+
 }

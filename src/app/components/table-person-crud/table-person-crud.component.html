@@ -28,6 +28,14 @@
              [(ngModel)]="person.email" name="Email" required>
     </div>
 
+    <div class="form-group mt-1">
+      <label for="DIY">DIY: </label>
+      <select class="form-control" name="DIY" id="DIY" [(ngModel)]="person.diy">
+        <option value="{{true}}">DIY</option>
+        <option value="{{false}}">Initiatief</option>
+      </select>
+    </div>
+
 
 
     <br/>
@@ -53,7 +61,7 @@
       <th scope="col">Voornaam</th>
       <th scope="col">Achternaam</th>
       <th scope="col">Email</th>
-      <th scope="col">Tel</th>
+      <th scope="col">Type</th>
       <th scope="col" width="100px">Acties</th>
     </tr>
     </thead>
@@ -63,7 +71,8 @@
       <td>{{person.firstName}}</td>
       <td>{{person.lastName}}</td>
       <td >{{person.email}}</td>
-      <td>{{person.phoneNumber}}</td>
+      <td *ngIf="person.diy">DIY</td>
+      <td *ngIf="!person.diy">Initiatief</td>
       <td>
         <i class="fas fa-pencil-alt fa-lg pointer" title="Edit" (click)="edit(person.personID)"></i>&nbsp;
         <i class="fas fa-trash-alt fa-lg pointer" title="Delete" (click)="delete(person.personID)"></i>

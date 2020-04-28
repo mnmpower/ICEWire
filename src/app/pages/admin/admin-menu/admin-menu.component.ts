@@ -60,6 +60,14 @@ export class AdminMenuComponent implements OnInit {
     this.router.navigate(['beheerAdmins/' + this.adminID], {replaceUrl: true});
   }
 
+  toAgeCategory() {
+    this.router.navigate(['beheerLeeftijd/' + this.adminID], {replaceUrl: true});
+  }
+
+  toDuration() {
+    this.router.navigate(['beheerTijdsduur/' + this.adminID], {replaceUrl: true});
+  }
+
   signOut() {
     localStorage.clear();
     this.authenticateService.isLoggedin = new BehaviorSubject( false);

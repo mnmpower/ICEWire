@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProjectService } from './project.service';
+import { AgeCategoryService } from './age-category.service';
 
-describe('ProjectService', () => {
-  let service: ProjectService;
+describe('AgeCategoryService', () => {
+  let service: AgeCategoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ProjectService);
+    service = TestBed.inject(AgeCategoryService);
   });
 
   it('should be created', () => {
