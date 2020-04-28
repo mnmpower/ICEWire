@@ -42,8 +42,6 @@ export class CategoryService {
   }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.baseUrl + 'categories', {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    });
+    return this.http.get<Category[]>(this.baseUrl + 'categories');
   }
 }
