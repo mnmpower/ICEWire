@@ -16,6 +16,7 @@ import {BeheerChallangeComponent} from './pages/admin/CRUD/beheer-challange/behe
 import {BeheerAdminsComponent} from './pages/admin/CRUD/beheer-admins/beheer-admins.component';
 import {BeheerTijdsduurComponent} from './pages/admin/CRUD/beheer-tijdsduur/beheer-tijdsduur.component';
 import {BeheerLeeftijdComponent} from './pages/admin/CRUD/beheer-leeftijd/beheer-leeftijd.component';
+import {IntiatifDetailsComponent} from './pages/tm/intiatif-details/intiatif-details.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'DIY', component: DIYComponent},
   {path: 'TM', component: TMComponent},
+
+  // Subpages
+  {path: 'TM/initiatif/:id', component: IntiatifDetailsComponent},
+
 
   // admin kant, dus autentication guard op zetten
   {path: 'admin', component: AdminComponent},

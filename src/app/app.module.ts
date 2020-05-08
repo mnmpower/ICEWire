@@ -10,7 +10,7 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {HomeComponent} from './pages/home/home.component';
 import {DIYComponent} from './pages/diy/diy.component';
 import {TMComponent} from './pages/tm/tm.component';
-import {CardComponent} from './components/card/card.component';
+import {CardComponent} from './components/card-project/card.component';
 import {VariablesService} from './shared/variables.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AdminComponent} from './pages/admin/admin.component';
@@ -44,6 +44,8 @@ import { BeheerTijdsduurComponent } from './pages/admin/CRUD/beheer-tijdsduur/be
 import { TableDurationCrudComponent } from './components/table-duration-crud/table-duration-crud.component';
 import {DurationService} from './services/duration.service';
 import { TableLeeftijdCrudComponent } from './components/table-leeftijd-crud/table-leeftijd-crud.component';
+import { CardInitiatifComponent } from './components/card-initiatif/card-initiatif.component';
+import { IntiatifDetailsComponent } from './pages/tm/intiatif-details/intiatif-details.component';
 
 
 
@@ -77,6 +79,8 @@ import { TableLeeftijdCrudComponent } from './components/table-leeftijd-crud/tab
     BeheerTijdsduurComponent,
     TableDurationCrudComponent,
     TableLeeftijdCrudComponent,
+    CardInitiatifComponent,
+    IntiatifDetailsComponent,
   ],
   imports: [
     BrowserModule,

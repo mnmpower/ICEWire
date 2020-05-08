@@ -21,6 +21,7 @@ export class SecurityInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError(err => {
+        localStorage.clear();
         if (err.status === 401) {
           this._router.navigate(['forbidden']);
         }

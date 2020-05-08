@@ -15,28 +15,62 @@
 
   <div class="container main">
     <!-- Page Features -->
-    <div class="row">
+    <!-- Page Features -->
+    <div class="m-0 ">
 
-      <div class="row card-deck mt-5 mb-5">
-        <h2 class="m-5">COMING SOON !!!</h2>
-        <!--      <div class="col-lg-4 col-md-6 col-sm-12">-->
-        <!--        <app-card></app-card>-->
-        <!--      </div>-->
-        <!--      <div class="col-lg-4 col-md-6 col-sm-12">-->
-        <!--        <app-card></app-card>-->
-        <!--      </div>-->
-        <!--      <div class="col-lg-4 col-md-6 col-sm-12">-->
-        <!--        <app-card></app-card>-->
-        <!--      </div>-->
-        <!--      <div class="col-lg-4 col-md-6 col-sm-12">-->
-        <!--        <app-card></app-card>-->
-        <!--      </div>-->
-        <!--      <div class="col-lg-4 col-md-6 col-sm-12">-->
-        <!--        <app-card></app-card>-->
-        <!--      </div>-->
-        <!--      <div class="col-lg-4 col-md-6 col-sm-12">-->
-        <!--        <app-card></app-card>-->
-        <!--      </div>-->
+      <div class="row m-3">
+
+<!--        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">-->
+<!--          <label for="zoekCategory">Zoek op category</label>-->
+<!--          <select class="form-control" name="zoekCategory" id="zoekCategory" [(ngModel)]="zoekobject.categoryID" (change)="zoek()">-->
+<!--            <option value="0">-&#45;&#45; Alle categorieën -&#45;&#45;</option>-->
+<!--            <option *ngFor="let c of categories" value="{{c.categoryID}}">{{c.name}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+
+<!--        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">-->
+<!--          <label for="zoekUitvoerder">Zoek op uitvoerder</label>-->
+<!--          <select class="form-control" name="zoekUitvoerder" id="zoekUitvoerder" [(ngModel)]="zoekobject.personID" (change)="zoek()">-->
+<!--            <option value="0">-&#45;&#45; Alle uitvoerders -&#45;&#45;</option>-->
+<!--            <option *ngFor="let p of persons" value="{{p.personID}}">{{p.firstName}} {{p.lastName}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+
+<!--        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">-->
+<!--          <label for="zoektijdsduur">Zoek op Tijdsduur</label>-->
+<!--          <select class="form-control" name="zoektijdsduur" id="zoektijdsduur" [(ngModel)]="zoekobject.durationID" (change)="zoek()">-->
+<!--            <option value="0">-&#45;&#45; Alle Tijdsduren -&#45;&#45;</option>-->
+<!--            <option *ngFor="let d of durations" value="{{d.durationID}}">{{d.name}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+
+<!--        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">-->
+<!--          <label for="zoekleeftijd">Zoek op leeftijd</label>-->
+<!--          <select class="form-control" name="zoekleeftijd" id="zoekleeftijd" [(ngModel)]="zoekobject.ageCategoryID" (change)="zoek()">-->
+<!--            <option value="0">-&#45;&#45; Alle leeftijden -&#45;&#45;</option>-->
+<!--            <option *ngFor="let a of ageCategories" value="{{a.ageCategoryID}}">{{a.name}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+
+      </div>
+
+      <div class="row mb-5 ml-2 mr-2">
+
+        <h1 *ngIf="initiatives.length == 0">Geen zoekresultaten beschikbaar</h1>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mb-3" *ngFor="let i of initiatives">
+          <app-card-initiatif
+            title="{{i.title}}"
+            about="{{i.about}}"
+            startDate="{{i.startDate}}"
+            location="{{i.location}}"
+            taskDescription="{{i.taskDescription}}"
+            statusName="{{i.status.name}}"
+            personName="{{i.person.firstName}} {{i.person.lastName}}"
+            categoryName="{{i.category.name}}"
+            initiatifID="{{i.initiatifID}}"
+          ></app-card-initiatif>
+        </div>
       </div>
 
     </div>

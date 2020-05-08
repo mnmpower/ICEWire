@@ -50,9 +50,7 @@ export class PersonService {
     });
   }
 
-
-
-
-
-
+  getPersonForUsers(ID: number): Observable<Person> {
+    return this.http.get<Person>(this.baseUrl + 'people/ForUsers/' + ID);
+  }
 }

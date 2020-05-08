@@ -108,8 +108,8 @@
       <th scope="row">{{initiatif.initiatifID}}</th>
       <td>{{initiatif.title}}</td>
       <td>{{initiatif.startDate}}</td>
-      <td *ngIf="initiatif.confirmed">Verborgen</td>
-      <td *ngIf="!initiatif.confirmed"> Zichtbaar </td>
+      <td *ngIf="!initiatif.confirmed">Verborgen</td>
+      <td *ngIf="initiatif.confirmed"> Zichtbaar </td>
       <td *ngIf="initiatif.about.length >= 30">{{initiatif.about.substr(0, 30)}}
         ...
       </td>

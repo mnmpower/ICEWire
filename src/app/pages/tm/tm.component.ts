@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {InitiatifService} from '../../services/initiatif.service';
+import {Initiatif} from '../../models/initiatif.model';
 
 @Component({
   selector: 'app-tm',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TMComponent implements OnInit {
 
-  constructor() { }
+  initiatives: Initiatif[] = [];
+
+  constructor(
+    private initiaticeService: InitiatifService,
+  ) {
+    this.initiaticeService.getInitiatifsWhereShowIsTrue().subscribe(r => {
+      this.initiatives = r.reverse();
+    });
+  }
 
   ngOnInit(): void {
   }

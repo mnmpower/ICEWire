@@ -48,9 +48,12 @@ export class InitiatifService {
   }
 
 
+  getInitiatifsWhereShowIsTrue() {
+    return this.http.get<Initiatif[]>(this.baseUrl + 'initiatifs/whereShowIsTrue');
+  }
 
+  getInitiatifForUsers(initiatifID: number): Observable<Initiatif> {
+    return this.http.get<Initiatif>(this.baseUrl + 'initiatifs/ForUsers/' + initiatifID);
 
-
-
-
+  }
 }
